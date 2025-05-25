@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/crumb-cafe/static/css/main.e6c13ad2.css",
+    "main.js": "/crumb-cafe/static/js/main.3489a308.js",
+    "static/js/453.8d0215b3.chunk.js": "/crumb-cafe/static/js/453.8d0215b3.chunk.js",
+    "static/media/4.png": "/crumb-cafe/static/media/4.03d51313dde08221c6fa.png",
+    "index.html": "/crumb-cafe/index.html",
+    "main.e6c13ad2.css.map": "/crumb-cafe/static/css/main.e6c13ad2.css.map",
+    "main.3489a308.js.map": "/crumb-cafe/static/js/main.3489a308.js.map",
+    "453.8d0215b3.chunk.js.map": "/crumb-cafe/static/js/453.8d0215b3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.3489a308.js"
+  ]
+}
