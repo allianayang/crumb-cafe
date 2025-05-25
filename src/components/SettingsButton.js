@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Stack, Button, Menu, MenuItem } from '@mui/material';
+import { Stack, IconButton, Menu, MenuItem } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-export default function SettingsButton() {
+export default function SettingsButton({style, setSoundOn}) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -15,7 +15,7 @@ export default function SettingsButton() {
 
   return (
     <>
-      <Button variant="outlined" onClick={handleClick}><SettingsIcon/></Button>
+      <IconButton variant="outlined" onClick={handleClick} sx={style}><SettingsIcon/></IconButton>
       <Menu
         anchorEl={anchorEl}
         open={open}
@@ -30,7 +30,7 @@ export default function SettingsButton() {
         }}
       >
         <Stack direction="row" sx={{height: '50%'}}>
-          <MenuItem onClick={handleClose}>Sound</MenuItem>
+          <MenuItem onClick={setSoundOn(false)}>Sound</MenuItem>
           <MenuItem onClick={handleClose}>Music</MenuItem>
           <MenuItem onClick={handleClose}>Save</MenuItem>
           <MenuItem onClick={handleClose}>Load</MenuItem>

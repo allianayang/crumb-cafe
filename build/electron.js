@@ -1,5 +1,8 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
+const fs = require('fs');
+
+const inventoryPath = path.join(app.getPath('userData'), 'inventory.json');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -19,6 +22,28 @@ function createWindow() {
     win.loadFile(path.join(__dirname, '../build/index.html'));
   }
 }
+
+ipcMain.handle('inventory:load', () => {
+  try {
+    if (fs.existsSync(inventoryPath)) {
+      const raw = fs.readFileSync(inventoryPath, 'utf8');
+      return JSON.parse(raw);
+    }
+    return [];
+  } catch (e) {
+    console.error('Error loading inventory:', e);
+    return [];
+  }
+});
+
+// IPC: save inventory
+ipcMain.handle('inventory:save', (event, data) => {
+  try {
+    fs.writeFileSync(inventoryPath, JSON.stringify(data, null, 2));
+  } catch (e) {
+    console.error('Error saving inventory:', e);
+  }
+});
 
 app.whenReady().then(createWindow);
 

@@ -1,28 +1,29 @@
 import { Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import theme from '../theme.js';
 
 
-export default function PixelBorder({children, theme}) {
+export default function PixelBorder({children}) {
 
   const pixelBorderOuter = {
-    border: `2px solid ${theme.palette.primary.dark}`,
+    border: `1px solid ${theme.palette.primary.dark}`,
+    boxShadow: `3px 0 0 ${theme.palette.primary.dark}, -3px 0 0 ${theme.palette.primary.dark}, 0 3px 0 ${theme.palette.primary.dark}, 0 -3px 0 ${theme.palette.primary.dark}`,
     justifyContent: 'center',
     alignItems: 'center'
   }
 
   const pixelBorder = {
-    border: `3px solid ${theme.palette.primary.main}`,
-    boxShadow: `1px 0 0 ${theme.palette.primary.main}, -1px 0 0 ${theme.palette.primary.main}, 0 1px 0 ${theme.palette.primary.main}, 0 -1px 0 ${theme.palette.primary.main}`,
-    m: 0.14,
+    border: `4px solid ${theme.palette.primary.main}`,
     justifyContent: 'center',
     alignItems: 'center'
   }
 
   const pixelBorderInner = {
-    border: `.5px solid ${theme.palette.primary.dark}`,
+    border: `2.5px solid ${theme.palette.primary.dark}`,
     boxShadow: `1.5px 0 0 ${theme.palette.primary.dark}, -1.5px 0 0 ${theme.palette.primary.dark}, 0 1.5px 0 ${theme.palette.primary.dark}, 0 -1.5px 0 ${theme.palette.primary.dark}`,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: `${theme.palette.primary.light}`
   }
 
   return (

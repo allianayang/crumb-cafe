@@ -1,5 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Button } from '@mui/material';
+import { Typography, Button, Stack } from '@mui/material';
+import theme from '../theme.js';
+
+const pixelButtonStyles = {
+  fontSize: '20px',
+  backgroundColor: `${theme.palette.primary.light}`, // or your pixel-style color
+  border: `2px solid ${theme.palette.primary.dark}`,
+  borderRadius: 0,
+  padding: '8px 16px',
+  color: `${theme.palette.primary.dark}`,
+  boxShadow: `2px 2px 0 ${theme.palette.primary.dark}`,
+  textTransform: 'none',
+  transition: 'all 0.1s ease-in-out',
+  '&:active': {
+    boxShadow: `0 0 0 ${theme.palette.primary.dark}`,
+    transform: 'translate(2px, 2px)',
+  },
+  '&:hover': {
+    backgroundColor: `${theme.palette.primary.main}`,
+  },
+};
 
 export default function Timer() {
   // Pomodoro Timer States
@@ -40,22 +60,23 @@ export default function Timer() {
   };
 
   return (
-    <>
-      <Typography variant="h6">{isFocus ? 'Focus Time' : 'Break Time'}</Typography>
-      <Typography variant="h3" style={{ fontWeight: 'bold' }}>
+    <Stack spacing={2} sx={{height: '100%', p: 4, alignItems: 'center', justifyContent: 'center'}}>
+      <Typography variant="h4">{isFocus ? 'Baking Now' : 'Cooling Down'}</Typography>
+      <Typography variant="h2" style={{ fontWeight: 'bold' }}>
         {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
       </Typography>
 
+      <Stack direction="row" spacing={4} sx={{justifyContent: 'center'}}>
       <Button
-        variant="contained"
         color={isRunning ? 'secondary' : 'primary'}
         onClick={toggleTimer}
-        style={{ margin: '20px 0' }}
+        style={pixelButtonStyles}
       >
         {isRunning ? 'Pause' : 'Start'}
       </Button>
 
-      <Button variant="outlined" onClick={resetTimer}>Reset</Button>
-    </>
+      <Button onClick={resetTimer} sx={pixelButtonStyles}>Reset</Button>
+      </Stack>
+    </Stack>
   )
 }
